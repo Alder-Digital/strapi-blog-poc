@@ -30,6 +30,9 @@ export function getStrapiMedia(url: string | null) {
   return `${getStrapiURL()}${url}`;
 }
 
+/**
+ * TODO: add support for multiple locales
+ */
 export function formatDate(dateString: string) {
   const date = new Date(dateString);
   const options: Intl.DateTimeFormatOptions = {
