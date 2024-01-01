@@ -5,14 +5,14 @@ import Link from "next/link";
 // import utilities
 import { getStrapiMedia, formatDate } from "../utils/api-helpers";
 
-// import types
-import { Article } from "@/types";
+// import strapi types
+import { type Article } from "@/types/article";
 
 export default function ArticleList({
-  data: articles,
+  articles,
   children,
 }: {
-  data: Article[];
+  articles: Article[];
   children?: React.ReactNode;
 }) {
   return (
@@ -20,14 +20,14 @@ export default function ArticleList({
       <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {articles.map((article) => {
           const imageUrl = getStrapiMedia(
-            article.attributes.cover.data?.attributes.url
+            article.attributes.cover.data.attributes.url
           );
 
           const category = article.attributes.category.data?.attributes;
           const authorsBio = article.attributes.authorsBio.data?.attributes;
 
           const avatarUrl = getStrapiMedia(
-            authorsBio?.avatar.data.attributes.url
+            authorsBio?.avatar.data?.attributes.url
           );
 
           return (

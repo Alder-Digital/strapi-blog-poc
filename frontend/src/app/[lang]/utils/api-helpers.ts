@@ -16,9 +16,9 @@ export function getStrapiURL(path = "") {
  * @param url
  * @returns the correct media url regardless whether it is hosted on strapi or an external provider
  */
-export function getStrapiMedia(url: string | null) {
-  if (url == null) {
-    return null;
+export function getStrapiMedia(url: string | undefined) {
+  if (url == undefined) {
+    return;
   }
 
   // Return the full URL if the media is hosted on an external provider

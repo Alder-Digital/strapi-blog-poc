@@ -1,3 +1,5 @@
+"use client";
+
 // import composables
 import { useState, useEffect, useCallback } from "react";
 
@@ -54,6 +56,7 @@ export default function Page() {
       };
       const options = { headers: { Authorization: `Bearer ${token}` } };
       const responseData = await fetchAPI(path, urlParamsObject, options);
+
       if (start === 0) {
         setArticles(responseData.data);
       } else {
@@ -65,6 +68,8 @@ export default function Page() {
       return responseData;
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -82,20 +87,22 @@ export default function Page() {
   return (
     <div>
       <PageHeader heading="Our Blog" text="Checkout Something Cool" />
-      <ArticleList data={data}>
-        {meta!.pagination.start + meta!.pagination.limit <
-          meta!.pagination.total && (
-          <div className="flex justify-center">
-            <button
-              type="button"
-              className="px-6 py-3 text-sm rounded-lg hover:underline dark:bg-gray-900 dark:text-gray-400"
-              onClick={loadMorePosts}
-            >
-              Load more posts...
-            </button>
-          </div>
-        )}
-      </ArticleList>
+      {articles && (
+        <ArticleList articles={articles}>
+          {meta!.pagination.start + meta!.pagination.limit <
+            meta!.pagination.total && (
+            <div className="flex justify-center">
+              <button
+                type="button"
+                className="px-6 py-3 text-sm rounded-lg hover:underline dark:bg-gray-900 dark:text-gray-400"
+                onClick={loadMorePosts}
+              >
+                Load more posts...
+              </button>
+            </div>
+          )}
+        </ArticleList>
+      )}
     </div>
   );
 }
