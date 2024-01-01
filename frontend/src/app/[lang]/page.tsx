@@ -12,7 +12,7 @@ import PageHeader from "./components/PageHeader";
 import ArticleList from "./components/ArticleList";
 
 // import types
-import { type Article } from "@/types";
+import { type Article } from "@/types/article";
 
 /**
  * TODO: generate from API codegen with transformer interfaces
