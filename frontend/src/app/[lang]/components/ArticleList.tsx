@@ -5,50 +5,8 @@ import Link from "next/link";
 // import utilities
 import { getStrapiMedia, formatDate } from "../utils/api-helpers";
 
-/**
- * TODO: generate this based on API codegen with transformer interfaces
- * @see https://strapi.io/blog/improve-your-frontend-experience-with-strapi-types-and-type-script
- */
-interface Article {
-  id: 4;
-  attributes: {
-    title: string;
-    description: string;
-    slug: string;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
-    cover: {
-      data: {
-        attributes: {
-          url: string;
-        };
-      };
-    };
-    category: {
-      data: {
-        attributes: {
-          name: string;
-          slug: string;
-        };
-      };
-    };
-    authorsBio: {
-      data: {
-        attributes: {
-          name: string;
-          avatar: {
-            data: {
-              attributes: {
-                url: string;
-              };
-            };
-          };
-        };
-      };
-    };
-  };
-}
+// import types
+import { Article } from "@/types";
 
 export default function ArticleList({
   data: articles,
