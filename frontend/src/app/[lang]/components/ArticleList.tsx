@@ -32,7 +32,7 @@ export default function ArticleList({
 
           return (
             <Link
-              href={`${category?.slug}/${article.attributes.slug}`}
+              href={`${article.attributes.locale}/${category?.slug}/${article.attributes.slug}`}
               key={article.id}
               className="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900 lg:w-[300px] xl:min-w-[375px] rounded-2xl overflow-hidden shadow-lg"
             >
@@ -41,7 +41,7 @@ export default function ArticleList({
                   alt="presentation"
                   width="240"
                   height="240"
-                  className="object-cover w-full h-44 "
+                  className="object-cover w-full h-44"
                   src={imageUrl}
                 />
               )}

@@ -1,6 +1,7 @@
 export interface Article {
   id: 4;
   attributes: {
+    locale: "nl" | "en" | "de-CH" | "de-DE";
     title: string;
     description: string;
     slug: string;

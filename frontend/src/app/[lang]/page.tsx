@@ -30,7 +30,11 @@ interface Meta {
  * from the Strapi API /articlesendpoint and renders them in a neat blog-like format.
  * It includes pagination for loading more posts when the Load more posts button is clicked.
  */
-export default function Page() {
+export default function Page({
+  params: { lang },
+}: {
+  params: { lang: "nl" | "en" | "de-CH" | "de-DE" };
+}) {
   const [meta, setMeta] = useState<Meta | undefined>();
   const [articles, setArticles] = useState<Article[] | undefined>();
   const [loading, setLoading] = useState<boolean>(true);
@@ -42,6 +46,7 @@ export default function Page() {
       const path = `/articles`;
       const urlParamsObject = {
         sort: { createdAt: "desc" },
+        locale: lang,
         populate: {
           cover: { fields: ["url"] },
           category: { populate: "*" },
