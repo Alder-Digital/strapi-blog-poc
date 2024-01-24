@@ -1,11 +1,18 @@
 import PageHeader from "../components/PageHeader";
 import { fetchAPI } from "../utils/fetch-api";
 import ArticleList from "../components/ArticleList";
+import { Locale } from "../../../../i18n-config";
 
 /**
  * fetch articles by a given category.
  */
-async function fetchArticlesByCategory(filter: string) {
+async function fetchArticlesByCategory({
+  category,
+  locale,
+}: {
+  category: string;
+  locale: Locale;
+}) {
   try {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
     const path = "/articles";
@@ -16,9 +23,10 @@ async function fetchArticlesByCategory(filter: string) {
       },
       filters: {
         category: {
-          slug: filter,
+          slug: category,
         },
       },
+      locale,
       populate: {
         cover: {
           fields: ["url"],
@@ -59,10 +67,10 @@ async function fetchArticlesByCategory(filter: string) {
 export default async function CategoryRoute({
   params,
 }: {
-  params: { category: string };
+  params: { category: string; locale: Locale };
 }) {
   const filter = params.category;
-  const { data } = await fetchArticlesByCategory(filter);
+  const { data } = await fetchArticlesByCategory(params);
 
   if (data.length === 0) {
     return (
@@ -71,8 +79,6 @@ export default async function CategoryRoute({
       </div>
     );
   }
-
-  console.log(data[0].attributes);
 
   const { name, description } = data[0]?.attributes.category.data.attributes;
 
