@@ -75,7 +75,7 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: { locale: string };
 }) {
   const global = await getGlobal();
   if (!global.data) return null;
@@ -115,5 +115,5 @@ export default async function RootLayout({
 }
 
 export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }));
+  return i18n.locales.map((locale) => ({ locale: locale }));
 }

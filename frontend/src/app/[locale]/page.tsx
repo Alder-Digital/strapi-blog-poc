@@ -31,9 +31,9 @@ interface Meta {
  * It includes pagination for loading more posts when the Load more posts button is clicked.
  */
 export default function Page({
-  params: { lang },
+  params: { locale },
 }: {
-  params: { lang: "nl" | "en" | "de-CH" | "de-DE" };
+  params: { locale: "nl" | "en" | "de-CH" | "de-DE" };
 }) {
   const [meta, setMeta] = useState<Meta | undefined>();
   const [articles, setArticles] = useState<Article[] | undefined>();
@@ -46,7 +46,7 @@ export default function Page({
       const path = `/articles`;
       const urlParamsObject = {
         sort: { createdAt: "desc" },
-        locale: lang,
+        locale: locale,
         populate: {
           cover: { fields: ["url"] },
           category: { populate: "*" },

@@ -1,4 +1,4 @@
-// ./frontend/src/app/[lang]/components/Logo.tsx
+// ./frontend/src/app/[locale]/components/Logo.tsx
 
 import React from "react";
 import Link from "next/link";

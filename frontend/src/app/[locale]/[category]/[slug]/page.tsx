@@ -1,5 +1,5 @@
-import { fetchAPI } from "@/app/[lang]/utils/fetch-api";
-import Article from "@/app/[lang]/components/Article";
+import { fetchAPI } from "@/app/[locale]/utils/fetch-api";
+import Article from "@/app/[locale]/components/Article";
 import type { Metadata } from "next";
 
 async function getArticleBySlug(slug: string) {

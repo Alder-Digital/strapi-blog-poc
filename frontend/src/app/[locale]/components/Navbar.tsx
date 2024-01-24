@@ -1,4 +1,4 @@
-// ./frontend/src/app/[lang]/components/Navbar.tsx
+// ./frontend/src/app/[locale]/components/Navbar.tsx
 
 "use client";
 import Logo from "./Logo";
