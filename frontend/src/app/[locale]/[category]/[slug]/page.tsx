@@ -1,12 +1,20 @@
-import { fetchAPI } from "@/app/[lang]/utils/fetch-api";
-import Article from "@/app/[lang]/components/Article";
+import { fetchAPI } from "@/app/[locale]/utils/fetch-api";
+import Article from "@/app/[locale]/components/Article";
 import type { Metadata } from "next";
+import { Locale } from "../../../../../i18n-config";
 
-async function getArticleBySlug(slug: string) {
+async function getArticleBySlug({
+  slug,
+  locale,
+}: {
+  slug: string;
+  locale: Locale;
+}) {
   const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
   const path = `/articles`;
   const urlParamsObject = {
     filters: { slug },
+    locale,
     populate: {
       cover: { fields: ["url"] },
       authorsBio: { populate: "*" },
@@ -37,21 +45,20 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   const meta = await getMetaData(params.slug);
-  const metadata = meta[0].attributes.seo;
+  const metadata = meta[0]?.attributes.seo;
 
   return {
-    title: metadata.metaTitle,
-    description: metadata.metaDescription,
+    title: metadata?.metaTitle,
+    description: metadata?.metaDescription,
   };
 }
 
 export default async function ArticleRoute({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string; locale: Locale };
 }) {
-  const { slug } = params;
-  const data = await getArticleBySlug(slug);
+  const data = await getArticleBySlug(params);
   if (data.data.length === 0) return <h2>no Article found</h2>;
   return <Article data={data.data[0]} />;
 }
