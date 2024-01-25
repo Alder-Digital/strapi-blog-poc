@@ -30,7 +30,7 @@
 
 `yarn develop`
 
-9. Visit [http://localhost:1337/admin/auth/register-admin](http://localhost:1337/admin/auth/register-admin) and create the admin user. The users aren't backed up.
+9. Visit [http://localhost:1337/admin/auth/register-admin](http://localhost:1337/admin/auth/register-admin) and create the admin user. The admin user isn't backed up.
 
 10. Create a public facing API key for the frontend with `unlimited` token duration and token-type `readonly`. The settings below are granular but you should be OK with the readonly defaults. [http://localhost:1337/admin/settings/api-tokens?sort=name:ASC](http://localhost:1337/admin/settings/api-tokens?sort=name:ASC)
 
