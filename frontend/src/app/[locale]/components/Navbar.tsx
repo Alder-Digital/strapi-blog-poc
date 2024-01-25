@@ -1,6 +1,6 @@
 // ./frontend/src/app/[locale]/components/Navbar.tsx
 
-"use client";
+"use client"; // TODO: refactor to server-side rendered page.
 import Logo from "./Logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

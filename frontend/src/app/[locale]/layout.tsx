@@ -10,8 +10,8 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 
 const FALLBACK_SEO: Metadata = {
-  title: "Strapi Adfinis Blog",
-  description: "Adfinis Blog",
+  title: "Strapi Blog",
+  description: "A blog about tech stuff. Powered by Strapi 🥳",
 };
 
 async function getGlobal() {

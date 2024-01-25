@@ -1,4 +1,4 @@
-"use client";
+"use client"; // TODO: refactor to server-side rendered page. It shouldn't be necessary to use useCallback / useEffect on initial load.
 
 // import composables
 import { useState, useEffect, useCallback } from "react";
